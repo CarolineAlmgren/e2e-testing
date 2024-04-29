@@ -41,7 +41,7 @@ it("should list movies from api", ()=>{
     });
 
     it("should ge right URL",()=> {
-        cy.visit("")
+        cy.visit("http://localhost:5173")
         cy.intercept("http://omdbapi.com/*", {
             Search: [  {
                 "Title": "Halloween 4: The Return of Michael Myers",
