@@ -1,4 +1,4 @@
-import { should } from "chai";
+
 describe("fetch api test", ()=> {
 it("should list movies from api", ()=>{
     cy.visit("http://localhost:5173")
@@ -30,10 +30,9 @@ it("should list movies from api", ()=>{
             "imdbID": "tt1311067",
             "Type": "movie",
             "Poster": "https://m.media-amazon.com/images/M/MV5BMjE2OTEzODI0NF5BMl5BanBnXkFtZTcwMTE4MTY2Mg@@._V1_SX300.jpg"
-        },
-        ]
-    }).as("myapicall")
+        }]
 
+    }).as("myapicall")
     cy.get("button:first").click()
     cy.get(".movie").should("have.length",3)
     cy.get("h3:first").should("have.text", "Halloween Ends")
@@ -57,12 +56,12 @@ it("should list movies from api", ()=>{
     cy.wait("@myapicall").its("request.url").should("contain","Halloween")
     })
 
-    it("should show show error massage", ()=> {
+    it("should show error massage", ()=> {
         cy.visit("http://localhost:5173")
         cy.get("input#searchText")
         cy.get("button").click()
         cy.get("div#movie-container").should("have.text","Inga sökresultat att visa")
     })
+ 
 })
-
 
